@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanic Shop App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>ENTER SERVICE NAME</h1>
+        <form action="{{ url_for('add') }}" method="POST">
+            <label for="customer_name">Customer Name:</label>
+            <input type="text" id="customer_name" name="customer_name" required><br><br>
+
+            <label for="phone_number">Phone Number:</label>
+            <input type="text" id="phone_number" name="phone_number" required><br><br>
+
+            <label for="license_plate">License Plate:</label>
+            <input type="text" id="license_plate" name="license_plate" required><br><br>
+
+            <label for="make">Make:</label>
+            <input type="text" id="make" name="make" required><br><br>
+
+            <label for="model">Model:</label>
+            <input type="text" id="model" name="model" required><br><br>
+
+            <label for="km">Km:</label>
+            <input type="text" id="km" name="km" required><br><br>
+
+            <label for="date">Date:</label>
+            <input type="text" id="date" name="date" required><br><br>
+
+            <label for="service_history">Service History:</label>
+            <input type="text" id="service_history" name="service_history" required><br><br>
+
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" required><br><br>
+
+            <button type="submit">Save Entry</button>
+        </form>
+
+        <form action="{{ url_for('search') }}" method="POST">
+            <label for="search_text">Search:</label>
+            <input type="text" id="search_text" name="search_text" required>
+            <button type="submit">Search</button>
+        </form>
+
+        <a href="{{ url_for('display_all') }}">Display All Licenses</a>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
